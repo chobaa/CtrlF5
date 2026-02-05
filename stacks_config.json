@@ -1,0 +1,20 @@
+{
+    "LangChain": [
+        "https://docs.langchain.com/oss/python/langchain/agents",
+        "https://docs.langchain.com/oss/python/langchain/models",
+        "https://docs.langchain.com/oss/python/langchain/messages",
+        "https://docs.langchain.com/oss/python/langchain/tools",
+        "https://docs.langchain.com/oss/python/langchain/short-term-memory",
+        "https://docs.langchain.com/oss/python/langchain/streaming/overview",
+        "https://docs.langchain.com/oss/python/langchain/structured-output",
+        "https://docs.pydantic.dev/latest/",
+        "https://docs.pydantic.dev/latest/api/base_model/#pydantic.BaseModel.model_copy",
+        "https://docs.pydantic.dev/latest/api/root_model/",
+        "https://docs.pydantic.dev/latest/api/dataclasses/",
+        "https://docs.pydantic.dev/latest/api/validate_call/",
+        "https://docs.pydantic.dev/latest/api/type_adapter/",
+        "https://langchain-ai.github.io/langgraph/"
+    ],
+    "Spring Boot": [],
+    "React": []
+}
