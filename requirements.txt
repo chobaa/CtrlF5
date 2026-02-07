@@ -1,11 +1,13 @@
 streamlit
-langchain>=0.3.0
+langchain>=1.0.0
 langchain-community
 langchain-openai
 langchain-huggingface
 langchain-chroma
+langchain-classic
 beautifulsoup4
 nest-asyncio
 python-dotenv
 chromadb
 sentence-transformers
+rank_bm25
