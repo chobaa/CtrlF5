@@ -16,21 +16,19 @@
 
 ## 🎥 Demo Video
 
-[![Demo Video](http://img.youtube.com/vi/PB5y2Q9V7mg/0.jpg)](https://www.youtube.com/watch?v=PB5y2Q9V7mg)
-
 > **[시연 영상 보러가기](https://www.youtube.com/watch?v=PB5y2Q9V7mg)**  
 > *클릭하여 RAG 엔진의 동작 과정을 확인해보세요.*
 
 ---
 
-## � Project Documents
+## 📄 Project Documents
 
-> **[기획 및 중간보고서](YOUR_LINK_HERE)**  
-> **[결과 보고서](YOUR_LINK_HERE)**  
+> **[기획 및 중간보고서](https://bkamp.ai/ko/recipes/0b5d273e-b3c0-4970-b1a3-fd9d27778545)**  
+> **[결과 보고서](https://bkamp.ai/ko/showcases/9aa6c1b7-0ad8-4a88-a56a-8ff88a8d64fc)**  
 
 ---
 
-## �📸 Screenshots
+## 📸 Screenshots
 
 | **Main Interface** | **Admin & Knowledge Base** |
 |:---:|:---:|
