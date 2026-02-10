@@ -15,6 +15,10 @@ def render_sidebar():
         strict_mode = st.toggle("🛡️ 엄격 모드", value=True, 
                                 help="켜기: 문서에 있는 내용만 대답합니다.\n끄기: AI의 일반 지식도 함께 사용합니다.")
         
+        st.caption("참조 문서 개수 (Top-K)")
+        top_k = st.slider("참조 문서 개수", min_value=1, max_value=20, value=5, label_visibility="collapsed",
+                          help="최종적으로 LLM에 전달할 문서의 최대 개수입니다.")
+        
         st.divider()
 
         st.markdown("### 🛠️ 기술 스택 관리")
@@ -75,4 +79,4 @@ def render_sidebar():
                         status.update(label="❌ 실패", state="error")
                         st.error("문서 내용을 찾을 수 없습니다.")
 
-        return selected_stack, strict_mode
+        return selected_stack, strict_mode, top_k

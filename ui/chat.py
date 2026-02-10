@@ -9,6 +9,15 @@ def render_chat_messages(messages):
                  st.warning(m["content"])
             else:
                  st.markdown(m["content"])
+                 
+                 # 저장된 참조 문서가 있으면 출력
+                 if "sources" in m and m["sources"]:
+                     with st.expander("🔍 참조 문서 (Source)"):
+                         for i, doc in enumerate(m["sources"]):
+                             score = doc.get("score", 0.0)
+                             st.markdown(f"**🔗 출처 {i+1}:** `{doc.get('source', '알 수 없음')}` (Score: {score:.4f})")
+                             st.caption(doc.get("content", "")[:250].replace("\n", " ") + "...")
+                             st.divider()
 
 def render_input_area():
     st.divider()

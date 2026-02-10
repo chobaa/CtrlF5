@@ -14,11 +14,27 @@
 
 ---
 
-## 📸 Screenshots
+## 🎥 Demo Video
+
+[![Demo Video](http://img.youtube.com/vi/PB5y2Q9V7mg/0.jpg)](https://www.youtube.com/watch?v=PB5y2Q9V7mg)
+
+> **[시연 영상 보러가기](https://www.youtube.com/watch?v=PB5y2Q9V7mg)**  
+> *클릭하여 RAG 엔진의 동작 과정을 확인해보세요.*
+
+---
+
+## � Project Documents
+
+> **[기획 및 중간보고서](YOUR_LINK_HERE)**  
+> **[결과 보고서](YOUR_LINK_HERE)**  
+
+---
+
+## �📸 Screenshots
 
 | **Main Interface** | **Admin & Knowledge Base** |
 |:---:|:---:|
-| ![Main UI](assets/screenshot_main.png) | ![Admin UI](assets/screenshot_admin.png) |
+| ![Main View](assets/HomeView.PNG) | ![RAG & Source View](assets/SourceView.PNG) |
 | *모던한 다크 그레이 & 블루 테마* | *URL 관리 및 RAG 엔진 업데이트* |
 
 ---
@@ -55,14 +71,18 @@
 ```
 CtrlF5/
 ├── 📂 assets/              # CSS 스타일 및 정적 리소스
-│   └── styles.py          # Streamlit 커스텀 CSS
-├── 📂 core/                # 핵심 RAG 로직 모듈
+│   └── style.css          # 메인 스타일시트
+├── 📂 core/                # 핵심 RAG 로직 및 비즈니스 로직
+│   ├── callbacks.py       # 이벤트 핸들러 (버튼 클릭 등)
 │   ├── database.py        # 벡터 DB 관리 및 문서 로딩
 │   ├── engine.py          # RAG 검색 파이프라인 (LangChain)
 │   ├── model_loader.py    # 모델 로딩 및 캐싱 (Singleton)
 │   └── prompts.py         # 시스템 프롬프트 템플릿
+├── 📂 ui/                  # UI 컴포넌트
+│   ├── chat.py            # 채팅창 및 입력 영역
+│   └── sidebar.py         # 사이드바 (설정 및 스택 관리)
 ├── .env                   # API Key 환경 변수
-├── main.py                # 애플리케이션 진입점 (UI)
+├── main.py                # 애플리케이션 진입점 (App Layout)
 ├── requirements.txt       # 의존성 패키지 목록
 └── stacks_config.json     # 사용자 등록 스택/URL 데이터
 ```
@@ -77,7 +97,7 @@ CtrlF5/
 
 1.  **Clone the Repository**
     ```bash
-    git clone [https://github.com/your-username/CtrlF5.git](https://github.com/your-username/CtrlF5.git)
+    git clone [https://github.com/chobaa/CtrlF5.git](https://github.com/chobaa/CtrlF5.git)
     cd CtrlF5
     ```
 

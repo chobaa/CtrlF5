@@ -17,5 +17,8 @@
         "https://docs.langchain.com/oss/python/migrate/langchain-v1"
     ],
     "Spring Boot": [],
-    "React": []
+    "React": [],
+    "Tanstack": [
+        "https://tanstack.com/query/v5/docs/framework/react/guides/queries"
+    ]
 }

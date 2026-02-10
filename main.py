@@ -29,7 +29,7 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # 3. 사이드바 렌더링
-selected_stack, strict_mode = render_sidebar()
+selected_stack, strict_mode, top_k = render_sidebar()
 
 # 4. 메인 영역 헤더
 c1, c2 = st.columns([0.7, 0.3])
@@ -68,7 +68,7 @@ if st.session_state.messages and st.session_state.messages[-1]["role"] == "user"
         history = [HumanMessage(content=m["content"]) if m["role"] == "user" else AIMessage(content=m["content"]) for m in st.session_state.messages[:-1]]
         with st.spinner("최신 문서 분석 중..."):
             try:
-                rag_chain = get_rag_chain(vectorstore, selected_stack, is_strict=strict_mode)
+                rag_chain = get_rag_chain(vectorstore, selected_stack, is_strict=strict_mode, relevance_threshold=0.5, top_k=top_k)
                 response = rag_chain.invoke({"input": last_user_msg, "chat_history": history})
                 answer_text = response['answer']
                 
@@ -77,15 +77,36 @@ if st.session_state.messages and st.session_state.messages[-1]["role"] == "user"
                     st.session_state.messages.append({"role": "assistant", "content": answer_text})
                 else:
                     st.markdown(answer_text)
-                    st.session_state.messages.append({"role": "assistant", "content": answer_text})
-                    with st.expander("🔍 참조 문서 (Source)"):
-                        if response.get('context'):
+                    
+                    # 참조 문서 데이터 추출 및 저장
+                    sources_data = []
+                    if response.get('context'):
+                        with st.expander("🔍 참조 문서 (Source)"):
                             for i, doc in enumerate(response['context']):
-                                st.markdown(f"**🔗 출처 {i+1}:** `{doc.metadata.get('source', '알 수 없음')}`")
-                                st.caption(doc.page_content[:250].replace("\n", " ") + "...")
+                                score = doc.metadata.get('relevance_score', 0.0)
+                                source = doc.metadata.get('source', '알 수 없음')
+                                content = doc.page_content
+                                
+                                # 데이터 저장용
+                                sources_data.append({
+                                    "source": source,
+                                    "content": content,
+                                    "score": score
+                                })
+                                
+                                # 즉시 렌더링
+                                st.markdown(f"**🔗 출처 {i+1}:** `{source}` (Score: {score:.4f})")
+                                st.caption(content[:250].replace("\n", " ") + "...")
                                 st.divider()
-                        elif not strict_mode:
-                            st.info("일반 지식 활용")
+                    elif not strict_mode:
+                        st.info("일반 지식 활용")
+
+                    st.session_state.messages.append({
+                        "role": "assistant", 
+                        "content": answer_text,
+                        "sources": sources_data
+                    })
+
             except Exception as e:
                 st.error(f"오류 발생: {e}")
 
